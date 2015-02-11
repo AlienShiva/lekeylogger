@@ -1,0 +1,76 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+    <Schema Namespace="KeyDBModel.Store" Alias="Self" Provider="System.Data.SqlClient" ProviderManifestToken="2008" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityContainer Name="KeyDBModelStoreContainer">
+          <EntitySet Name="Keys" EntityType="KeyDBModel.Store.Keys" store:Type="Tables" Schema="dbo" />
+        </EntityContainer>
+        <EntityType Name="Keys">
+          <Key>
+            <PropertyRef Name="InstanceID" />
+            <PropertyRef Name="SequenceNumber" />
+          </Key>
+          <Property Name="InstanceID" Type="nvarchar" Nullable="false" MaxLength="20" />
+          <Property Name="SequenceNumber" Type="int" Nullable="false" />
+          <Property Name="Referer" Type="nvarchar" MaxLength="256" />
+          <Property Name="KeyValue" Type="nchar" Nullable="false" MaxLength="1" />
+        </EntityType>
+      </Schema></edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="KeyDBModel" Alias="Self" p1:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:p1="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityContainer Name="KeyDBEntities" p1:LazyLoadingEnabled="true">
+          <EntitySet Name="Keys" EntityType="KeyDBModel.Key" />
+        </EntityContainer>
+        <EntityType Name="Key">
+          <Key>
+            <PropertyRef Name="InstanceID" />
+            <PropertyRef Name="SequenceNumber" />
+          </Key>
+          <Property Name="InstanceID" Type="String" Nullable="false" MaxLength="20" Unicode="true" FixedLength="false" />
+          <Property Name="SequenceNumber" Type="Int32" Nullable="false" />
+          <Property Name="KeyValue" Type="String" Nullable="false" MaxLength="1" Unicode="true" FixedLength="true" />
+          <Property Type="String" Name="Referer" MaxLength="256" FixedLength="false" Unicode="true" />
+        </EntityType>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="KeyDBModelStoreContainer" CdmEntityContainer="KeyDBEntities">
+          <EntitySetMapping Name="Keys">
+            <EntityTypeMapping TypeName="KeyDBModel.Key">
+              <MappingFragment StoreEntitySet="Keys">
+                <ScalarProperty Name="Referer" ColumnName="Referer" />
+                <ScalarProperty Name="InstanceID" ColumnName="InstanceID" />
+                <ScalarProperty Name="SequenceNumber" ColumnName="SequenceNumber" />
+                <ScalarProperty Name="KeyValue" ColumnName="KeyValue" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="True" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="True" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>
